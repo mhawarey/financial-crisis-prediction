@@ -1,0 +1,149 @@
+graph TB
+    %% Main Components
+    subgraph "Frontend Layer"
+        UI[User Interface]
+        Dash[Dashboard]
+        Alerts[Alert System]
+        Reports[Reports Generator]
+    end
+
+    subgraph "API Gateway Layer"
+        API[API Gateway]
+        Auth[Authentication]
+        RateLim[Rate Limiting]
+    end
+
+    subgraph "Core Services Layer"
+        DataMgr[Data Manager]
+        ModelMgr[Model Manager]
+        AnalyticsSvc[Analytics Service]
+        SchedulerSvc[Task Scheduler]
+        NotifSvc[Notification Service]
+    end
+
+    subgraph "Data Processing Layer"
+        ETL[ETL Pipelines]
+        FeatureEng[Feature Engineering]
+        Normalization[Data Normalization]
+        TextProc[Text Processing]
+    end
+
+    subgraph "Model Layer"
+        subgraph "Filter Component"
+            EKF[Extended Kalman Filter]
+            KF[Kalman Filter]
+        end
+        
+        subgraph "Deep Learning Component"
+            LSTM[LSTM Networks]
+            Trans[Transformers]
+            GNN[Graph Neural Networks]
+        end
+        
+        subgraph "Bayesian Component"
+            BayesModels[Bayesian Models]
+            MCMC[MCMC Sampling]
+        end
+        
+        subgraph "ML Component"
+            XGB[XGBoost Models]
+            SkLearn[Scikit-Learn Models]
+        end
+        
+        Ensemble[Ensemble Integration]
+    end
+
+    subgraph "Risk Assessment Layer"
+        RiskMetrics[Risk Metrics Calculation]
+        Scenarios[Scenario Analysis]
+        Interpretability[Model Interpretability]
+    end
+
+    subgraph "Data Storage"
+        TimeSeries[Time Series DB]
+        Document[Document DB]
+        ModelStore[Model Storage]
+        FeatureStore[Feature Store]
+    end
+
+    subgraph "External Data Sources"
+        Markets[Market Data APIs]
+        EconData[Economic Indicators]
+        News[News & Social Media]
+        GeoEvents[Geopolitical Events]
+    end
+
+    %% Connections
+    Markets --> ETL
+    EconData --> ETL
+    News --> ETL
+    GeoEvents --> ETL
+    
+    ETL --> TimeSeries
+    ETL --> Document
+    
+    TimeSeries --> FeatureEng
+    Document --> TextProc
+    
+    FeatureEng --> FeatureStore
+    TextProc --> FeatureStore
+    
+    FeatureStore --> DataMgr
+    
+    DataMgr --> EKF
+    DataMgr --> KF
+    DataMgr --> LSTM
+    DataMgr --> Trans
+    DataMgr --> GNN
+    DataMgr --> BayesModels
+    DataMgr --> XGB
+    DataMgr --> SkLearn
+    
+    EKF --> Ensemble
+    KF --> Ensemble
+    LSTM --> Ensemble
+    Trans --> Ensemble
+    GNN --> Ensemble
+    BayesModels --> Ensemble
+    XGB --> Ensemble
+    SkLearn --> Ensemble
+    
+    Ensemble --> RiskMetrics
+    Ensemble --> Scenarios
+    Ensemble --> Interpretability
+    
+    RiskMetrics --> AnalyticsSvc
+    Scenarios --> AnalyticsSvc
+    Interpretability --> AnalyticsSvc
+    
+    ModelMgr --> Ensemble
+    Ensemble --> ModelStore
+    ModelMgr --> ModelStore
+    
+    AnalyticsSvc --> API
+    DataMgr --> API
+    ModelMgr --> API
+    NotifSvc --> API
+    
+    API --> UI
+    API --> Dash
+    API --> Alerts
+    API --> Reports
+    
+    SchedulerSvc --> DataMgr
+    SchedulerSvc --> ModelMgr
+    SchedulerSvc --> NotifSvc
+    
+    NotifSvc --> Alerts
+
+    classDef frontend fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef service fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef data fill:#bfb,stroke:#333,stroke-width:2px;
+    classDef model fill:#ffb,stroke:#333,stroke-width:2px;
+    classDef external fill:#fbb,stroke:#333,stroke-width:2px;
+    
+    class UI,Dash,Alerts,Reports frontend;
+    class API,Auth,RateLim,DataMgr,ModelMgr,AnalyticsSvc,SchedulerSvc,NotifSvc service;
+    class ETL,FeatureEng,Normalization,TextProc,TimeSeries,Document,ModelStore,FeatureStore data;
+    class EKF,KF,LSTM,Trans,GNN,BayesModels,MCMC,XGB,SkLearn,Ensemble,RiskMetrics,Scenarios,Interpretability model;
+    class Markets,EconData,News,GeoEvents external;

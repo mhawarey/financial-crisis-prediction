@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+dist/
+build/
+*.spec
+*.exe
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv*/
+
+# Data
+*.csv
+*.db
+*.log
+
+# Screenshots (keep in repo)
+# screenshots/
+
+# Word docs
+*.docx
