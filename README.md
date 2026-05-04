@@ -1,5 +1,7 @@
 # Global Financial Crisis Prediction System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A hybrid ML system for predicting financial crises using Extended Kalman Filtering, LSTM neural networks, ensemble machine learning, and Bayesian uncertainty quantification.
 
 ## Screenshots
@@ -57,6 +59,7 @@ Select models, choose data sources, set prediction timeframe, and click "Run Ana
 ## Author
 
 **Dr. Mosab Hawarey**
+>
 PhD, Geodetic & Photogrammetric Engineering (ITU) | MSc, Geomatics (Purdue) | MBA (Wales) | BSc, MSc (METU)
 
 - GitHub: https://github.com/mhawarey
